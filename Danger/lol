@@ -1,0 +1,23 @@
+import requests
+
+api_key = "INSERT_API_KEY_HERE"
+url = "https://api.example.com/data"
+
+params = {
+    "param1": "value1",
+    "param2": "value2"
+}
+
+headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
+}
+
+try:
+    response = requests.get(url, params=params, headers=headers)
+    response.raise_for_status() #raise exception if request was unsuccessful
+    data = response.json() #parse response data into a JSON object
+    #use retrieved data in your code or application
+    print(data)
+except requests.exceptions.HTTPError as err:
+    print(f"Error: {err}")
